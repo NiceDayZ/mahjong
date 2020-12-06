@@ -2,8 +2,8 @@ import pygame
 import sys
 import mahjong
 
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
+SCREEN_WIDTH = 1280
+SCREEN_HEIGHT = 720
 
 game_flag = True
 
@@ -17,8 +17,8 @@ if __name__ == '__main__':
     clock = pygame.time.Clock()
 
     tiles = mahjong.Mahjong("Assets/ExampleBlack.png")
-    single_piece = tiles.create_tile(60, 8, 150, 200, (0, 0), (0, 0, 0), 1)
-    single_piece2 = tiles.create_tile(60, 225, 150, 200, (0, 100), (0, 0, 3), 2)
+    single_piece = tiles.create_tile((0, 0, 0), 6)
+    single_piece2 = tiles.create_tile((0, 2, 0), 7)
     tile_group = pygame.sprite.Group()
     tile_group.add(single_piece)
     tile_group.add(single_piece2)
