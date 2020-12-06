@@ -3,6 +3,7 @@ import single_tile
 
 
 class Mahjong(pygame.sprite.Sprite):
+
     def __init__(self, url):
         super().__init__()
         self.custom_image = pygame.image.load(url).convert()
