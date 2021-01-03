@@ -1,0 +1,264 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>main module &mdash; mahjong 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> mahjong
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">main module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">mahjong</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>main module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/main.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-main">
+<span id="main-module"></span><h1>main module<a class="headerlink" href="#module-main" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="main.check_if_selectable">
+<code class="sig-prename descclassname">main.</code><code class="sig-name descname">check_if_selectable</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tile</span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.check_if_selectable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if a tile is selectable according with mahjong solitaire rules</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tile</strong> (<a class="reference internal" href="single_tile.html#single_tile.SingleTile" title="single_tile.SingleTile"><em>single_tile.SingleTile</em></a>) – The tile that is tested if selectable</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>returns whether or not the tile is selectable</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="main.check_if_win">
+<code class="sig-prename descclassname">main.</code><code class="sig-name descname">check_if_win</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main.check_if_win" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the game is finished according with mahjong solitaire rules</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns whether or not there are no more tiles in the field</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="main.deselect_tile">
+<code class="sig-prename descclassname">main.</code><code class="sig-name descname">deselect_tile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main.deselect_tile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if there are any tiles that are selected and needs to be deselected after pressing the same tile or somewhere
+on screen</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="main.import_level">
+<code class="sig-prename descclassname">main.</code><code class="sig-name descname">import_level</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file</span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.import_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Imports a level from a file given as a path string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file</strong> (<em>str</em>) – The path in string format</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="main.refresh_scene">
+<code class="sig-prename descclassname">main.</code><code class="sig-name descname">refresh_scene</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main.refresh_scene" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new tile group to be rendered with what is currently in the level array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the tile group according with the level</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pygame.sprite.Group()</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2021, Craciun Mihai-Cosmin
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

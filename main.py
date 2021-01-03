@@ -14,6 +14,13 @@ selected = None
 
 
 def check_if_selectable(tile):
+    """
+    Checks if a tile is selectable according with mahjong solitaire rules \n
+    :param tile: The tile that is tested if selectable
+    :type tile: single_tile.SingleTile
+    :return: returns whether or not the tile is selectable
+    :rtype: Boolean
+    """
     x, y, z = tile.coordinates[0], tile.coordinates[1], tile.coordinates[2]
     if z == (len(level) - 1):
         if (level[z][y][x + 2] == 0 and
@@ -45,6 +52,11 @@ def check_if_selectable(tile):
 
 
 def import_level(file):
+    """
+    Imports a level from a file given as a path string \n
+    :param file: The path in string format
+    :type file: str
+    """
     global level
     with open(file) as f:
         h, m = [int(x) for x in next(f).split()]
@@ -60,6 +72,11 @@ def import_level(file):
 
 
 def check_if_win():
+    """
+    Checks if the game is finished according with mahjong solitaire rules \n
+    :return: returns whether or not there are no more tiles in the field
+    :rtype: Boolean
+    """
     for z in range(len(level)):
         for x in range(len(level[z])):
             for y in range(len(level[z][x])):
@@ -69,6 +86,11 @@ def check_if_win():
 
 
 def refresh_scene():
+    """
+    Creates a new tile group to be rendered with what is currently in the level array \n
+    :return: returns the tile group according with the level
+    :rtype: pygame.sprite.Group()
+    """
     tile_grp = pygame.sprite.Group()
 
     for z in range(len(level)):
@@ -82,6 +104,10 @@ def refresh_scene():
 
 
 def deselect_tile():
+    """
+    Checks if there are any tiles that are selected and needs to be deselected after pressing the same tile or somewhere
+    on screen \n
+    """
     global selected
     selected = None
     for z in range(len(level)):

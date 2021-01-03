@@ -1,0 +1,7 @@
+mahjong module
+==============
+
+.. automodule:: mahjong
+   :members:
+   :undoc-members:
+   :show-inheritance:

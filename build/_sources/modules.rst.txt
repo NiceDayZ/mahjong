@@ -1,0 +1,10 @@
+mahjong
+=======
+
+.. toctree::
+   :maxdepth: 4
+
+   helper
+   mahjong
+   main
+   single_tile
