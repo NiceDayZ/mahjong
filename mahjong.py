@@ -4,9 +4,9 @@ import helper
 
 
 class Mahjong(pygame.sprite.Sprite):
-    TILE_HEIGHT = 200
-    TILE_WIDTH = 150
-    TILE_COLOR_KEY = (205, 232, 255)
+    TILE_HEIGHT = 140
+    TILE_WIDTH = 108
+    TILE_COLOR_KEY = (0, 0, 0)
 
     def __init__(self, url):
         super().__init__()
@@ -19,6 +19,6 @@ class Mahjong(pygame.sprite.Sprite):
         self.image = pygame.Surface((self.TILE_WIDTH, self.TILE_HEIGHT))
         self.image.set_colorkey(self.TILE_COLOR_KEY)
         self.image.blit(self.custom_image, (0, 0), pygame.Rect(x, y, self.TILE_WIDTH, self.TILE_HEIGHT))
-        self.image = pygame.transform.scale(self.image, (self.TILE_WIDTH//2, self.TILE_HEIGHT//2))
+        self.image = pygame.transform.scale(self.image, (int(self.TILE_WIDTH/1.4), int(self.TILE_HEIGHT/1.44)))
         tile = single_tile.SingleTile(pos_x, pos_y, self.image.get_rect(), self.image, coordinates, value)
         return tile

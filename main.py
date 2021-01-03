@@ -14,23 +14,31 @@ selected = None
 
 
 def check_if_selectable(tile):
-    # level[clicked_tile.coordinates[2]][clicked_tile.coordinates[1]][clicked_tile.coordinates[0]] = 0
-    if tile.coordinates[2] == (len(level) - 1):
-        if (level[tile.coordinates[2]][tile.coordinates[1]][tile.coordinates[0] + 2] == 0 or
-                level[tile.coordinates[2]][tile.coordinates[1]][tile.coordinates[0] - 2] == 0):
+    x, y, z = tile.coordinates[0], tile.coordinates[1], tile.coordinates[2]
+    if z == (len(level) - 1):
+        if (level[z][y][x + 2] == 0 and
+                level[z][y + 1][x + 2] == 0 and
+                level[z][y - 1][x + 2] == 0) or \
+            (level[z][y][x - 2] == 0 and
+                level[z][y + 1][x - 2] == 0 and
+                level[z][y - 1][x - 2] == 0):
             return True
     else:
-        if (level[tile.coordinates[2] + 1][tile.coordinates[1]][tile.coordinates[0]] == 0 and
-                level[tile.coordinates[2] + 1][tile.coordinates[1]][tile.coordinates[0] + 1] == 0 and
-                level[tile.coordinates[2] + 1][tile.coordinates[1]][tile.coordinates[0] - 1] == 0 and
-                level[tile.coordinates[2] + 1][tile.coordinates[1] + 1][tile.coordinates[0]] == 0 and
-                level[tile.coordinates[2] + 1][tile.coordinates[1] + 1][tile.coordinates[0] + 1] == 0 and
-                level[tile.coordinates[2] + 1][tile.coordinates[1] + 1][tile.coordinates[0] - 1] == 0 and
-                level[tile.coordinates[2] + 1][tile.coordinates[1] - 1][tile.coordinates[0]] == 0 and
-                level[tile.coordinates[2] + 1][tile.coordinates[1] - 1][tile.coordinates[0] + 1] == 0 and
-                level[tile.coordinates[2] + 1][tile.coordinates[1] - 1][tile.coordinates[0] - 1] == 0):
-            if (level[tile.coordinates[2]][tile.coordinates[1]][tile.coordinates[0] + 2] == 0 or
-                    level[tile.coordinates[2]][tile.coordinates[1]][tile.coordinates[0] - 2] == 0):
+        if (level[z + 1][y][x] == 0 and
+                level[z + 1][y][x + 1] == 0 and
+                level[z + 1][y][x - 1] == 0 and
+                level[z + 1][y + 1][x] == 0 and
+                level[z + 1][y + 1][x + 1] == 0 and
+                level[z + 1][y + 1][x - 1] == 0 and
+                level[z + 1][y - 1][x] == 0 and
+                level[z + 1][y - 1][x + 1] == 0 and
+                level[z + 1][y - 1][x - 1] == 0):
+            if (level[z][y][x + 2] == 0 and
+                level[z][y + 1][x + 2] == 0 and
+                level[z][y - 1][x + 2] == 0) or \
+                    (level[z][y][x - 2] == 0 and
+                     level[z][y + 1][x - 2] == 0 and
+                     level[z][y - 1][x - 2] == 0):
                 return True
 
     return False
@@ -64,13 +72,23 @@ def refresh_scene():
     tile_grp = pygame.sprite.Group()
 
     for z in range(len(level)):
-        for x in range(len(level[z])):
-            for y in range(len(level[z][x])):
+        for y in range(len(level[z][0])):
+            for x in range(len(level[z])):
                 if level[z][x][y] != 0:
                     single_tile_piece = tiles.create_tile((y, x, z), level[z][x][y])
                     tile_grp.add(single_tile_piece)
 
     return tile_grp
+
+
+def deselect_tile():
+    global selected
+    selected = None
+    for z in range(len(level)):
+        for x in range(len(level[z])):
+            for y in range(len(level[z][x])):
+                if level[z][x][y] >= 45:
+                    level[z][x][y] = level[z][x][y] - 45
 
 
 if __name__ == '__main__':
@@ -80,7 +98,7 @@ if __name__ == '__main__':
 
     import_level('Assets/Levels/level1.txt')
 
-    tiles = mahjong.Mahjong("Assets/Images/ExampleBlack.png")
+    tiles = mahjong.Mahjong("Assets/Images/Example_3D_2.png")
     tile_group = refresh_scene()
 
     while game_flag:
@@ -99,6 +117,8 @@ if __name__ == '__main__':
                     if check_if_selectable(clicked_tile):
                         if selected is None:
                             selected = clicked_tile
+                            coord = clicked_tile.coordinates
+                            level[coord[2]][coord[1]][coord[0]] = level[coord[2]][coord[1]][coord[0]] + 45
                             # TODO: Differentiate between selected and normal
                         else:
                             if selected.value == clicked_tile.value:
@@ -106,14 +126,11 @@ if __name__ == '__main__':
                                 coordinates_2 = selected.coordinates
                                 level[coordinates_1[2]][coordinates_1[1]][coordinates_1[0]] = 0
                                 level[coordinates_2[2]][coordinates_2[1]][coordinates_2[0]] = 0
-                            selected = None
-
-                    tile_group = refresh_scene()
+                            deselect_tile()
                 else:
-                    selected = None
+                    deselect_tile()
 
-                print(selected)
-
+        tile_group = refresh_scene()
         pygame.display.flip()
         screen.blit(modified_background, (0, 0))
         tile_group.draw(screen)
