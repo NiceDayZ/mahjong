@@ -1,5 +1,5 @@
 def get_pixel_values(value):
-    return (1 + (((value-1) % 45) * 110)), (1 + ((value-1)//45)*142)
+    return (1 + (((value-1) % 36) * 110)), (1 + ((value-1)//36)*142)
 
 
 def get_position_values(coordinates):

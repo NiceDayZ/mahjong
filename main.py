@@ -87,8 +87,8 @@ def deselect_tile():
     for z in range(len(level)):
         for x in range(len(level[z])):
             for y in range(len(level[z][x])):
-                if level[z][x][y] >= 45:
-                    level[z][x][y] = level[z][x][y] - 45
+                if level[z][x][y] > 36:
+                    level[z][x][y] = level[z][x][y] - 36
 
 
 if __name__ == '__main__':
@@ -118,7 +118,7 @@ if __name__ == '__main__':
                         if selected is None:
                             selected = clicked_tile
                             coord = clicked_tile.coordinates
-                            level[coord[2]][coord[1]][coord[0]] = level[coord[2]][coord[1]][coord[0]] + 45
+                            level[coord[2]][coord[1]][coord[0]] = level[coord[2]][coord[1]][coord[0]] + 36
                             # TODO: Differentiate between selected and normal
                         else:
                             if selected.value == clicked_tile.value:
@@ -126,6 +126,9 @@ if __name__ == '__main__':
                                 coordinates_2 = selected.coordinates
                                 level[coordinates_1[2]][coordinates_1[1]][coordinates_1[0]] = 0
                                 level[coordinates_2[2]][coordinates_2[1]][coordinates_2[0]] = 0
+
+                                if check_if_win():
+                                    sys.exit(0)
                             deselect_tile()
                 else:
                     deselect_tile()
